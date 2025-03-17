@@ -1,0 +1,13 @@
+﻿@model StudentApp.Models.Studente
+
+<div class="card">
+    <div class="card-header">
+        Dettagli di @Model.Nome @Model.Cognome
+    </div>
+    <div class="card-body">
+        <p><strong>Nome:</strong> @Model.Nome</p>
+        <p><strong>Cognome:</strong> @Model.Cognome</p>
+        <p><strong>Data di Nascita:</strong> @Model.DataDiNascita.ToString("dd/MM/yyyy")</p>
+        <p><strong>Email:</strong> @Model.Email</p>
+    </div>
+</div>

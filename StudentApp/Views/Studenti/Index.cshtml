@@ -1,0 +1,51 @@
+﻿@model IEnumerable<StudentApp.Models.Studente>
+
+@{
+    ViewData["Title"] = "Elenco Studenti";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Email</th>
+            <th>Dettagli</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var studente in Model)
+        {
+            <tr>
+                <td>@studente.Nome</td>
+                <td>@studente.Cognome</td>
+                <td>@studente.Email</td>
+                <td>
+                    <button class="btn btn-info" onclick="caricaDettagli(@studente.Id)">Dettagli</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<div id="dettagliStudente" class="mt-5"></div>
+
+@section Scripts {
+    <script>
+        function caricaDettagli(id) {
+            $.ajax({
+                url: '/Studenti/Dettagli/' + id,
+                type: 'GET',
+                success: function (data) {
+                    $('#dettagliStudente').html(data);
+                },
+                error: function () {
+                    alert('Errore durante il caricamento dei dettagli.');
+                }
+            });
+        }
+    </script>
+}
