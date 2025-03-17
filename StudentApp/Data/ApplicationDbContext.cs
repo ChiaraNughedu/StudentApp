@@ -14,7 +14,6 @@ namespace StudentApp.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Seed di dati per la tabella Studenti
             modelBuilder.Entity<Studente>().HasData(
                  new Studente
                  {
